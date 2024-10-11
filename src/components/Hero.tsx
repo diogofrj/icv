@@ -1,14 +1,38 @@
 import React from 'react';
+import { Phone } from 'lucide-react';
 
-const Hero = () => {
+const Hero: React.FC = () => {
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center text-white">
-      <div className="absolute inset-0 bg-black opacity-50"></div>
-      <div className="absolute inset-0 bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')"}}></div>
-      <div className="z-10 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold mb-4">Instituto Carla Veiga</h1>
-        <p className="text-xl md:text-2xl mb-8">Quiropraxia, Fisioterapia e Bem-Estar</p>
-        <a href="#contact" className="bg-yellow-500 text-black px-8 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition duration-300">Agende sua Consulta</a>
+    <section className="bg-custom-black text-white py-20">
+      <div className="container mx-auto px-6 text-center">
+        <img
+          src="src/logo.png"
+          alt="Instituto Carla Veiga Logo"
+          className="mx-auto mb-8 w-64 h-auto"
+        />
+        <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">
+          <span className="text-gold">Saúde</span>,{' '}
+          <span className="text-gold">Estética</span> e{' '}
+          <span className="text-gold">Bem-Estar</span>
+        </h1>
+        <p className="text-xl mb-8 font-light">
+          Descubra o melhor cuidado para você no Instituto Carla Veiga
+        </p>
+        <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6 mb-8">
+          <a
+            href="#services"
+            className="bg-gold text-custom-black font-bold py-3 px-8 rounded-full hover:bg-yellow-400 transition-colors"
+          >
+            Nossos Serviços
+          </a>
+          <a
+            href="https://wa.me/5521981172180"
+            className="flex items-center bg-green-500 text-white font-bold py-3 px-8 rounded-full hover:bg-green-600 transition-colors"
+          >
+            <Phone className="mr-2" size={20} />
+            Agende seu Atendimento pelo WhatsApp
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -2,7 +2,16 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        gold: '#FFD700',
+        'custom-black': '#000000',
+      },
+      fontFamily: {
+        sans: ['Montserrat', 'sans-serif'],
+        serif: ['Cormorant Garamond', 'serif'],
+      },
+    },
   },
   plugins: [],
 };
