@@ -142,7 +142,7 @@ const professionals = {
             name: 'Leo Rafael',
             image: 'path/to/image6.jpg',
             thumbnail: 'path/to/image6_thumbnail.jpg',
-            description: 'Personal trainer focado em bem-estar e saúde.'
+            description: 'Personal trainer focado em saúde e bem-estar.'
         },
         {
             name: 'Marcia Gaspar',
