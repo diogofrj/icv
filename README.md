@@ -8,12 +8,13 @@ Bem-vindo ao repositório do Instituto Carla Veiga, um projeto desenvolvido com 
 - **TypeScript**: Superset do JavaScript que adiciona tipagem estática.
 - **Tailwind CSS**: Framework CSS para estilização rápida e responsiva.
 - **Lucide React**: Conjunto de ícones para uma interface mais rica.
+- **EmailJS**: Serviço para envio de e-mails diretamente do frontend.
 
 ## Funcionalidades
 - **Página Inicial**: Apresenta uma visão geral dos serviços oferecidos.
 - **Serviços**: Seção dedicada a descrever cada serviço, como fisioterapia, quiropraxia, pilates, estética, entre outros.
 - **Sobre**: Informações sobre o Instituto Carla Veiga e sua missão.
-- **Contato**: Formulário para que os usuários possam entrar em contato facilmente.
+- **Contato**: Formulário que permite aos usuários enviar mensagens diretamente para o instituto. Utiliza o EmailJS para enviar e-mails sem a necessidade de um backend, garantindo que as mensagens sejam entregues de forma rápida e eficiente.
 
 
 ## Estrutura do Projeto
