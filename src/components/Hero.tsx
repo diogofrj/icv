@@ -1,18 +1,22 @@
 import React from 'react';
 import { Phone } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {
   return (
     <section className="bg-custom-black text-white py-20">
       <div className="container mx-auto px-6 text-center">
-        <img
+        <motion.img
           src="src/logo.png"
           alt="Instituto Carla Veiga Logo"
-          className="mx-auto mb-8 w-64 h-auto"
+          className="mx-auto mb-20 w-[30rem] h-auto border-none"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5 }}
         />
         <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">
-          <span className="text-gold">Saúde</span>,{' '}
-          <span className="text-gold">Estética</span> e{' '}
+          <span className="text-gold">Saúde,</span>{' '}
+          <span className="text-gold">Estética e</span> {' '}
           <span className="text-gold">Bem-Estar</span>
         </h1>
         <p className="text-xl mb-8 font-light">
@@ -23,7 +27,7 @@ const Hero: React.FC = () => {
             href="#services"
             className="bg-gold text-custom-black font-bold py-3 px-8 rounded-full hover:bg-yellow-400 transition-colors"
           >
-            Nossos Serviços
+            Conheça Nossos Serviços
           </a>
           <a
             href="https://wa.me/5521981172180"

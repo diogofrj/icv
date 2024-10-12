@@ -49,10 +49,17 @@ icv/
    ```bash
    npm run dev
    ```
-
 5. Acesse a aplicação no navegador:
    ```bash
    http://localhost:5173
+   ```
+6. Em caso de erros de versão do npm, execute o comando:
+   ```bash
+   nvm install 18.20.3
+   nvm use 18.20.3
+   npm install -g npm@10.2.3
+   node -v
+   npm -v
    ```
 
 ## Contribuição

@@ -12,8 +12,8 @@ const About: React.FC = () => {
               className="rounded-lg shadow-md"
             />
           </div>
-          <div className="md:w-1/2 md:pl-12">
-            <h2 className="text-4xl font-serif font-bold mb-6">Sobre o Instituto Carla Veiga</h2>
+          <div className="md:w-1/2 md:pl-12 text-justify">
+            <h2 className="text-4xl font-serif font-bold mb-6 text-center">Sobre o Instituto Carla Veiga</h2>
             <p className="text-gray-700 mb-4">
               O Instituto Carla Veiga é um centro de excelência em saúde, estética e bem-estar. Nossa missão é proporcionar cuidados de alta qualidade, combinando técnicas modernas e atendimento personalizado.
             </p>

@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-center md:text-left mb-4 md:mb-0 flex items-center">
-            <img src="/logo.png" alt="Instituto Carla Veiga Logo" className="h-12 mr-4" />
+            <img src="src/logo.png" alt="Instituto Carla Veiga Logo" className="h-12 mr-4" />
             <div>
               <h3 className="text-xl font-serif font-bold text-gold">Instituto Carla Veiga</h3>
               <p className="mt-2">Saúde, Estética e Bem Estar</p>
