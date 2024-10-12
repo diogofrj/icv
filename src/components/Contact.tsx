@@ -8,6 +8,7 @@ const Contact: React.FC = () => {
     email: '',
     message: '',
   });
+  const [feedbackMessage, setFeedbackMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -37,9 +38,11 @@ const Contact: React.FC = () => {
     .then((response) => {
       console.log('Email enviado com sucesso!', response.status, response.text);
       setFormData({ name: '', email: '', message: '' });
+      setFeedbackMessage(`Obrigado, ${formData.name}! Sua mensagem foi enviada com sucesso.`);
     })
     .catch((error) => {
       console.error('Erro ao enviar o email:', error);
+      setFeedbackMessage('Desculpe, houve um erro ao enviar sua mensagem. Tente novamente mais tarde.');
     });
   };
 
@@ -47,6 +50,11 @@ const Contact: React.FC = () => {
     <section id="contact" className="py-20 bg-gray-100">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-serif font-bold text-center mb-12">Entre em Contato</h2>
+        {feedbackMessage && (
+          <div className="mb-4 text-center text-lg font-semibold text-green-600">
+            {feedbackMessage}
+          </div>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
             <h3 className="text-2xl font-serif font-bold mb-4">Informações de Contato</h3>

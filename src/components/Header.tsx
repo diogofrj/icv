@@ -15,6 +15,7 @@ const Header: React.FC = () => {
           <a href="#home" className="hover:text-gold transition-colors">Home</a>
           <a href="#services" className="hover:text-gold transition-colors">Serviços</a>
           <a href="#about" className="hover:text-gold transition-colors">Sobre</a>
+          <a href="#team" className="hover:text-gold transition-colors">Equipe</a>
           <a href="#contact" className="hover:text-gold transition-colors">Contato</a>
         </nav>
         <div className="md:hidden">
@@ -29,6 +30,7 @@ const Header: React.FC = () => {
             <a href="#home" className="hover:text-gold transition-colors">Home</a>
             <a href="#services" className="hover:text-gold transition-colors">Serviços</a>
             <a href="#about" className="hover:text-gold transition-colors">Sobre</a>
+            <a href="#team" className="hover:text-gold transition-colors">Equipe</a>
             <a href="#contact" className="hover:text-gold transition-colors">Contato</a>
           </nav>
         </div>

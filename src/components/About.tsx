@@ -15,10 +15,23 @@ const About: React.FC = () => {
           <div className="md:w-1/2 md:pl-12 text-justify">
             <h2 className="text-4xl font-serif font-bold mb-6 text-center">Sobre o Instituto Carla Veiga</h2>
             <p className="text-gray-700 mb-4">
-              O Instituto Carla Veiga é um centro de excelência em saúde, estética e bem-estar. Nossa missão é proporcionar cuidados de alta qualidade, combinando técnicas modernas e atendimento personalizado.
+              O Instituto Carla Veiga é um centro de excelência em saúde, estética e bem-estar. <strong>Nossa Missão</strong> é proporcionar cuidados de alta qualidade por meio de uma equipe multidisciplinar integrada, com foco em 
+              tratamentos eficazes, atendimento humanizado e inovação, visando o bem-estar físico e emocional de 
+              cada cliente superando suas expectativas.
             </p>
             <p className="text-gray-700 mb-4">
-              Com uma equipe de profissionais altamente qualificados, oferecemos uma ampla gama de serviços que incluem fisioterapia, quiropraxia, pilates, estética, e muito mais. Nosso objetivo é ajudar nossos clientes a alcançarem o equilíbrio perfeito entre corpo e mente.
+              <strong>Nossos Valores:</strong>
+              <ul className="mt-4 list-inside pl-5">
+                <li className="text-gray-700"><strong>Excelência no Atendimento:</strong> Compromisso com a qualidade e atenção aos detalhes para garantir que cada cliente receba o melhor cuidado possível.</li>
+                <li className="text-gray-700"><strong>Humanização:</strong> Atendimento empático, personalizado e focado nas necessidades individuais de cada cliente.</li>
+                <li className="text-gray-700"><strong>Inovação:</strong> Utilização de tecnologias avançadas e práticas atualizadas para proporcionar tratamentos eficazes e modernos.</li>
+                <li className="text-gray-700"><strong>Ética e Transparência:</strong> Agir com integridade, honestidade e clareza em todas as interações.</li>
+                <li className="text-gray-700"><strong>Trabalho em Equipe:</strong> Colaboração entre diferentes especialidades para oferecer um cuidado integrado e abrangente.</li>
+                <li className="text-gray-700"><strong>Compromisso com a Satisfação do Paciente:</strong> Foco em proporcionar uma experiência que vá além das expectativas, visando a satisfação completa dos clientes.</li>
+              </ul>
+            </p>            
+            <p className="text-gray-700 mb-4">
+              <strong>Nossa Visão</strong> é ser referência em cuidados de saúde multidisciplinares, reconhecida pela excelência no atendimento, pela inovação contínua e pela plena satisfação de nossos clientes, consolidando nossa marca como sinônimo de qualidade e confiança no setor de saúde e bem-estar.
             </p>
             <p className="text-gray-700">
               No Instituto Carla Veiga, acreditamos que cada pessoa é única, e por isso, desenvolvemos tratamentos personalizados para atender às necessidades específicas de cada cliente. Venha nos conhecer e descubra como podemos ajudar você a viver com mais saúde e bem-estar.
