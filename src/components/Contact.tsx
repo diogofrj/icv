@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Instagram } from 'lucide-react';
 import emailjs from 'emailjs-com';
 
+emailjs.init(import.meta.env.VITE_EMAILJS_USER_ID);
+
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -32,8 +34,7 @@ const Contact: React.FC = () => {
     emailjs.send(
       import.meta.env.VITE_EMAILJS_SERVICE_ID,
       import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      emailData,
-      import.meta.env.VITE_EMAILJS_USER_ID
+      emailData
     )
     .then((response) => {
       console.log('Email enviado com sucesso!', response.status, response.text);
