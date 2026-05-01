@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Instagram } from 'lucide-react';
 import emailjs from 'emailjs-com';
 
-emailjs.init(import.meta.env.VITE_EMAILJS_USER_ID);
+emailjs.init('hYPtjZpkaqMeNvp1L');
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -32,8 +32,8 @@ const Contact: React.FC = () => {
     // console.log('User ID:', import.meta.env.VITE_EMAILJS_USER_ID);
 
     emailjs.send(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      'service_7wunsp8',
+      'template_8e8uvc8',
       emailData
     )
     .then((response) => {
