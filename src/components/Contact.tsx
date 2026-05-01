@@ -69,7 +69,7 @@ const Contact: React.FC = () => {
               </p>
               <p className="flex items-center">
                 <Mail className="w-6 h-6 text-gold mr-2" />
-                institutocarlaveiga@gmail.com
+                sac@institutocarlaveiga.com.br
               </p>
               <p className="flex items-center">
                 <Instagram className="w-6 h-6 text-gold mr-2" />

@@ -18,9 +18,9 @@ const Footer: React.FC = () => {
               <Instagram size={20} className="mr-2" />
               @institutocarlaveiga
             </a>
-            <a href="mailto:institutocarlaveiga@gmail.com" className="flex items-center hover:text-gold transition-colors">
+            <a href="mailto:sac@institutocarlaveiga.com.br" className="flex items-center hover:text-gold transition-colors">
               <Mail size={20} className="mr-2" />
-              institutocarlaveiga@gmail.com
+              sac@institutocarlaveiga.com.br
             </a>
             <a href="tel:+5521981172180" className="flex items-center hover:text-gold transition-colors">
               <Phone size={20} className="mr-2" />
