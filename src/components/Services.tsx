@@ -38,23 +38,11 @@ const services = [
   {
     name: 'Pilates',
     icon: Dumbbell,
-    description: 'Eleve corpo e mente a um novo patamar. Uma sinfonia de movimentos precisos e fluidos, o Pilates é muito mais do que uma simples atividade física. É uma jornada de autoconhecimento, onde corpo e mente se unem em perfeita harmonia. Através de exercícios que desafiam e fortalecem, você redescobre a consciência corporal, melhora a postura e encontra um equilíbrio duradouro. Experimente a sensação de leveza e bem-estar que o Pilates proporciona.'
+    description: 'Eleve corpo e mente a um novo patamar. Uma sinfonia de movimentos precisos e fluidos, o Pilates é muito mais do que uma simples atividade física. É uma jornada de autoconhecimento, onde corpo e mente se unem em perfeita harmonia. Através de exercícios que desafiam e fortalecem, você redescobre a consciência corporal, melhora a postura e encontra um equilíbrio duradouro. Experimente a sensação de leveza e bem-estar que o Pilates proporciona. Contamos com 3 salas exclusivas de Pilates para atender você com todo o conforto e qualidade.'
   },
-  { name: 'Salão de Beleza', 
-    icon: Scissors, 
-    description: 'Seu refúgio de autocuidado. Um espaço onde a beleza encontra a arte. Nosso salão é muito mais do que apenas um local para um corte de cabelo. Aqui, você experimenta uma jornada de transformação, com profissionais especializados que celebram sua individualidade. Relaxe, inspire-se e saia renovada. Um oásis urbano onde a beleza é mais do que aparência, é uma expressão de você.' 
-  },
-  { name: 'Terapia Capilar', 
-    icon: Leaf, 
-    description: 'A terapia capilar é um ritual de cuidado que transcende a beleza, restaurando a saúde do seu couro cabeludo e a vitalidade dos fios. Uma jornada personalizada para revelar a beleza natural e única dos seus cabelos.' 
-  },
-  { name: 'Biomedicina Estética', 
-    icon: Heart, 
-    description: 'Harmonize sua beleza com a expertise da biomedicina estética. Nossos tratamentos personalizados, realizados por profissionais altamente qualificados, revelam a sua melhor versão. Experimente resultados naturais e duradouros, com tecnologias de ponta e um toque de sofisticação.' 
-  },
-  { name: 'Análise de Coloração Pessoal', 
-    icon: Eye, 
-    description: 'Descubra a sua paleta de cores ideal. A análise de coloração pessoal é a arte de harmonizar as cores com a sua beleza natural. Através de um estudo detalhado do seu tom de pele, olhos e cabelo, identificamos quais tonalidades realçam sua luminosidade e te deixam radiante. É como encontrar a sua paleta de cores personalizada, um guia para escolhas que valorizam sua identidade e te fazem brilhar em qualquer ocasião. Uma experiência única para quem busca autoconhecimento e um estilo autêntico.' 
+  { name: 'Biomedicina Estética',
+    icon: Heart,
+    description: 'Harmonize sua beleza com a expertise da biomedicina estética. Nossos tratamentos personalizados, realizados por profissionais altamente qualificados, revelam a sua melhor versão. Experimente resultados naturais e duradouros, com tecnologias de ponta e um toque de sofisticação.'
   },
   { name: 'Maquiagem', 
     icon: Star, 
