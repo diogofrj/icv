@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
     <section className="bg-custom-black text-white py-20">
       <div className="container mx-auto px-6 text-center">
         <motion.img
-          src="src/logo.png"
+          src="/logo.png"
           alt="Instituto Carla Veiga Logo"
           className="mx-auto mb-20 w-[30rem] h-auto border-none"
           initial={{ scale: 0 }}

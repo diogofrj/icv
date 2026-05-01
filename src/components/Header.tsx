@@ -8,7 +8,7 @@ const Header: React.FC = () => {
     <header className="bg-custom-black text-white">
       <div className="container mx-auto px-4 py-6 flex justify-between items-center">
         <div className="flex items-center">
-          <img src="src/logo.png" alt="Instituto Carla Veiga Logo" className="h-12 mr-4" />
+          <img src="/logo.png" alt="Instituto Carla Veiga Logo" className="h-12 mr-4" />
           <div className="text-2xl font-serif font-bold text-gold">Instituto Carla Veiga</div>
         </div>
         <nav className="hidden md:flex space-x-6">
