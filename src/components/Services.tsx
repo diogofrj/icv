@@ -13,7 +13,6 @@ const services = [
           <li>Fisioterapia Especializada em Coluna</li>
           <li>Reeducação Postural Global (RPG)</li>
           <li>Fisioterapia Especializada em Escoliose</li>
-          <span className="block">(Método S4D – Escoliose Brasil)</span>
           <li>Acupuntura</li>
           <li>Liberação Miofascial</li>
           <li>Recovery</li>
