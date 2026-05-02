@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Instagram } from 'lucide-react';
+import { MapPin, Phone, Mail, Instagram, MessageCircle } from 'lucide-react';
 import emailjs from 'emailjs-com';
 
 emailjs.init('hYPtjZpkaqMeNvp1L');
@@ -101,10 +101,19 @@ const Contact: React.FC = () => {
                 <Mail className="w-6 h-6 text-gold mr-2" />
                 sac@institutocarlaveiga.com.br
               </p>
-              <p className="flex items-center">
+              <a href="https://www.instagram.com/institutocarlaveiga" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-gold transition-colors">
                 <Instagram className="w-6 h-6 text-gold mr-2" />
                 @institutocarlaveiga
-              </p>
+              </a>
+              <a
+                href="https://chat.whatsapp.com/GKAlWjX6ELWDOM1B7tfD7G"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-green-600 hover:text-green-700 transition-colors font-medium"
+              >
+                <MessageCircle className="w-6 h-6 mr-2 flex-shrink-0" />
+                <span>Entre na nossa Comunidade WhatsApp<br /><span className="text-sm font-normal text-gray-600">Avisos, Promoções e Eventos</span></span>
+              </a>
             </div>
           </div>
           <div>
