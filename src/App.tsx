@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import About from './components/About';
 import Contact from './components/Contact';
-import Team from './components/Team'; // Importando o novo componente
 import Footer from './components/Footer';
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
         <Hero />
         <Services />
         <About />
-        <Team /> {/* Adicionando o componente da equipe */}
         <Contact />
       </main>
       <Footer />
