@@ -55,7 +55,7 @@ const Contact: React.FC = () => {
     }
 
     setSending(true);
-    emailjs.send('service_j1j3owl', 'template_wivsskc', {
+    emailjs.send('service_j1j3owl', 'template_8e8uvc8', {
       from_name: formData.name,
       to_name: 'ICV',
       message: formData.message,
