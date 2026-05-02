@@ -7,7 +7,7 @@ const About: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-8 md:mb-0">
             <img
-              src="/assets/dra_carlaveiga.jpeg"
+              src="/assets/dra_carlaveiga_about.jpeg"
               alt="Instituto Carla Veiga"
               className="rounded-lg shadow-md w-full object-cover"
             />

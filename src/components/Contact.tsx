@@ -4,47 +4,66 @@ import emailjs from 'emailjs-com';
 
 emailjs.init('hYPtjZpkaqMeNvp1L');
 
+function formatWhatsApp(value: string): string {
+  const digits = value.replace(/\D/g, '').slice(0, 11);
+  if (digits.length <= 2) return digits;
+  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+}
+
+function isValidWhatsApp(value: string): boolean {
+  const digits = value.replace(/\D/g, '');
+  return digits.length >= 10 && digits.length <= 11;
+}
+
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    whatsapp: '',
     message: '',
   });
+  const [whatsappError, setWhatsappError] = useState('');
   const [feedbackMessage, setFeedbackMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    if (name === 'whatsapp') {
+      const formatted = formatWhatsApp(value);
+      setFormData({ ...formData, whatsapp: formatted });
+      setWhatsappError('');
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!isValidWhatsApp(formData.whatsapp)) {
+      setWhatsappError('Informe um WhatsApp válido com DDD. Ex: (21) 98117-2180');
+      return;
+    }
 
     const emailData = {
       from_name: formData.name,
       to_name: 'ICV',
       message: formData.message,
       email: formData.email,
+      whatsapp: formData.whatsapp,
     };
 
-    // console.log('Service ID:', import.meta.env.VITE_EMAILJS_SERVICE_ID);
-    // console.log('Template ID:', import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
-    // console.log('User ID:', import.meta.env.VITE_EMAILJS_USER_ID);
-
-    emailjs.send(
-      'service_7wunsp8',
-      'template_8e8uvc8',
-      emailData
-    )
-    .then((response) => {
-      console.log('Email enviado com sucesso!', response.status, response.text);
-      setFormData({ name: '', email: '', message: '' });
-      setFeedbackMessage(`Obrigado, ${formData.name}! Sua mensagem foi enviada com sucesso.`);
-    })
-    .catch((error) => {
-      console.error('Erro ao enviar o email:', error);
-      setFeedbackMessage('Desculpe, houve um erro ao enviar sua mensagem. Tente novamente mais tarde.');
-    });
+    emailjs.send('service_7wunsp8', 'template_8e8uvc8', emailData)
+      .then((response) => {
+        console.log('Email enviado com sucesso!', response.status, response.text);
+        setFormData({ name: '', email: '', whatsapp: '', message: '' });
+        setFeedbackMessage(`Obrigado, ${formData.name}! Sua mensagem foi enviada com sucesso.`);
+      })
+      .catch((error) => {
+        console.error('Erro ao enviar o email:', error);
+        setFeedbackMessage('Desculpe, houve um erro ao enviar sua mensagem. Tente novamente mais tarde.');
+      });
   };
 
   return (
@@ -106,6 +125,24 @@ const Contact: React.FC = () => {
                 />
               </div>
               <div className="mb-4">
+                <label htmlFor="whatsapp" className="block text-gray-700 font-bold mb-2">
+                  WhatsApp <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="whatsapp"
+                  name="whatsapp"
+                  value={formData.whatsapp}
+                  onChange={handleChange}
+                  placeholder="(21) 98117-2180"
+                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gold ${whatsappError ? 'border-red-500' : 'border-gray-300'}`}
+                  required
+                />
+                {whatsappError && (
+                  <p className="mt-1 text-sm text-red-500">{whatsappError}</p>
+                )}
+              </div>
+              <div className="mb-4">
                 <label htmlFor="message" className="block text-gray-700 font-bold mb-2">Mensagem</label>
                 <textarea
                   id="message"
@@ -117,7 +154,9 @@ const Contact: React.FC = () => {
                   required
                 ></textarea>
               </div>
-              <button type="submit" className="bg-gold text-custom-black font-bold py-2 px-4 rounded-md hover:bg-yellow-400 transition-colors">Enviar Mensagem</button>
+              <button type="submit" className="bg-gold text-custom-black font-bold py-2 px-4 rounded-md hover:bg-yellow-400 transition-colors">
+                Enviar Mensagem
+              </button>
             </form>
           </div>
         </div>
