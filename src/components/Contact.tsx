@@ -12,59 +12,69 @@ function formatWhatsApp(value: string): string {
   return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
 }
 
-function isValidWhatsApp(value: string): boolean {
-  const digits = value.replace(/\D/g, '');
-  return digits.length >= 10 && digits.length <= 11;
+function validate(formData: typeof initialState) {
+  const errors: Partial<typeof initialState> = {};
+  if (formData.name.trim().length < 3)
+    errors.name = 'Informe seu nome completo (mínimo 3 caracteres).';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+    errors.email = 'Informe um e-mail válido. Ex: nome@email.com';
+  const digits = formData.whatsapp.replace(/\D/g, '');
+  if (digits.length < 10 || digits.length > 11)
+    errors.whatsapp = 'Informe um WhatsApp válido com DDD. Ex: (21) 98117-2180';
+  if (formData.message.trim().length < 10)
+    errors.message = 'Escreva uma mensagem com pelo menos 10 caracteres.';
+  return errors;
 }
 
+const initialState = { name: '', email: '', whatsapp: '', message: '' };
+
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    whatsapp: '',
-    message: '',
-  });
-  const [whatsappError, setWhatsappError] = useState('');
+  const [formData, setFormData] = useState(initialState);
+  const [errors, setErrors] = useState<Partial<typeof initialState>>({});
   const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [sending, setSending] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    if (name === 'whatsapp') {
-      const formatted = formatWhatsApp(value);
-      setFormData({ ...formData, whatsapp: formatted });
-      setWhatsappError('');
-    } else {
-      setFormData({ ...formData, [name]: value });
+    const updated = {
+      ...formData,
+      [name]: name === 'whatsapp' ? formatWhatsApp(value) : value,
+    };
+    setFormData(updated);
+    if (errors[name as keyof typeof initialState]) {
+      setErrors({ ...errors, [name]: undefined });
     }
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (!isValidWhatsApp(formData.whatsapp)) {
-      setWhatsappError('Informe um WhatsApp válido com DDD. Ex: (21) 98117-2180');
+    const validationErrors = validate(formData);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return;
     }
 
-    const emailData = {
+    setSending(true);
+    emailjs.send('service_7wunsp8', 'template_8e8uvc8', {
       from_name: formData.name,
       to_name: 'ICV',
       message: formData.message,
       email: formData.email,
       whatsapp: formData.whatsapp,
-    };
-
-    emailjs.send('service_7wunsp8', 'template_8e8uvc8', emailData)
-      .then((response) => {
-        console.log('Email enviado com sucesso!', response.status, response.text);
-        setFormData({ name: '', email: '', whatsapp: '', message: '' });
+    })
+      .then(() => {
+        setFormData(initialState);
+        setErrors({});
         setFeedbackMessage(`Obrigado, ${formData.name}! Sua mensagem foi enviada com sucesso.`);
       })
-      .catch((error) => {
-        console.error('Erro ao enviar o email:', error);
+      .catch(() => {
         setFeedbackMessage('Desculpe, houve um erro ao enviar sua mensagem. Tente novamente mais tarde.');
-      });
+      })
+      .finally(() => setSending(false));
   };
+
+  const inputClass = (field: keyof typeof initialState) =>
+    `w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gold ${errors[field] ? 'border-red-500' : 'border-gray-300'}`;
 
   return (
     <section id="contact" className="py-20 bg-gray-100">
@@ -99,35 +109,35 @@ const Contact: React.FC = () => {
           </div>
           <div>
             <h3 className="text-2xl font-serif font-bold mb-4">Envie uma Mensagem</h3>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} noValidate>
               <div className="mb-4">
-                <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Nome</label>
+                <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Nome <span className="text-red-500">*</span></label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold"
-                  required
+                  placeholder="Seu nome completo"
+                  className={inputClass('name')}
                 />
+                {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
               </div>
               <div className="mb-4">
-                <label htmlFor="email" className="block text-gray-700 font-bold mb-2">E-mail</label>
+                <label htmlFor="email" className="block text-gray-700 font-bold mb-2">E-mail <span className="text-red-500">*</span></label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold"
-                  required
+                  placeholder="nome@email.com"
+                  className={inputClass('email')}
                 />
+                {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
               </div>
               <div className="mb-4">
-                <label htmlFor="whatsapp" className="block text-gray-700 font-bold mb-2">
-                  WhatsApp <span className="text-red-500">*</span>
-                </label>
+                <label htmlFor="whatsapp" className="block text-gray-700 font-bold mb-2">WhatsApp <span className="text-red-500">*</span></label>
                 <input
                   type="tel"
                   id="whatsapp"
@@ -135,27 +145,29 @@ const Contact: React.FC = () => {
                   value={formData.whatsapp}
                   onChange={handleChange}
                   placeholder="(21) 98117-2180"
-                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gold ${whatsappError ? 'border-red-500' : 'border-gray-300'}`}
-                  required
+                  className={inputClass('whatsapp')}
                 />
-                {whatsappError && (
-                  <p className="mt-1 text-sm text-red-500">{whatsappError}</p>
-                )}
+                {errors.whatsapp && <p className="mt-1 text-sm text-red-500">{errors.whatsapp}</p>}
               </div>
               <div className="mb-4">
-                <label htmlFor="message" className="block text-gray-700 font-bold mb-2">Mensagem</label>
+                <label htmlFor="message" className="block text-gray-700 font-bold mb-2">Mensagem <span className="text-red-500">*</span></label>
                 <textarea
                   id="message"
                   name="message"
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold"
-                  required
+                  placeholder="Escreva sua mensagem..."
+                  className={inputClass('message')}
                 ></textarea>
+                {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message}</p>}
               </div>
-              <button type="submit" className="bg-gold text-custom-black font-bold py-2 px-4 rounded-md hover:bg-yellow-400 transition-colors">
-                Enviar Mensagem
+              <button
+                type="submit"
+                disabled={sending}
+                className="bg-gold text-custom-black font-bold py-2 px-4 rounded-md hover:bg-yellow-400 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {sending ? 'Enviando...' : 'Enviar Mensagem'}
               </button>
             </form>
           </div>
