@@ -7,9 +7,9 @@ const About: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-8 md:mb-0">
             <img
-              src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              src="/assets/dra_carlaveiga.jpeg"
               alt="Instituto Carla Veiga"
-              className="rounded-lg shadow-md"
+              className="rounded-lg shadow-md w-full object-cover"
             />
           </div>
           <div className="md:w-1/2 md:pl-12 text-justify">
